@@ -16,7 +16,7 @@ public class Util {
     public static boolean isPrime(int x) {
         int i = 2;
         double sqrt = Math.sqrt(x);
-        while (i < sqrt) {
+        while (i <= sqrt) {
             if (x % i == 0)
                 return false;
             i++;
