@@ -15,10 +15,8 @@ public class P22_Names {
                 .readAllLines(Paths.get(System.getProperty("user.dir") + "/src/resources/p022_names.txt")).stream()
                 .flatMap((l) -> Arrays.stream(l.split(",")).map(s -> s.substring(1, s.length() - 1))).sorted()
                 .collect(Collectors.toList());
-
         System.out.println(IntStream.range(0, names.size())
                 .mapToLong(idx -> (long) (names.get(idx).chars().map(x -> x - 'A' + 1).sum() * (idx + 1))).sum());
-
     }
 
 }
