@@ -62,4 +62,12 @@ public class Util {
         return res;
     }
 
+    public static long factorialOf(int n) {
+        long res = 1;
+        for (int i = 2; i <= n; i++) {
+            res *= i;
+        }
+        return res;
+    }
+
 }
