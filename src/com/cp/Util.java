@@ -70,4 +70,13 @@ public class Util {
         return res;
     }
 
+    public static void printPrimes(boolean[] nonPrimes) {
+        for (int i = 2; i < nonPrimes.length; i++) {
+            if (!nonPrimes[i]) {
+                System.out.print(i + ", ");
+            }
+        }
+        System.out.println();
+    }
+
 }
