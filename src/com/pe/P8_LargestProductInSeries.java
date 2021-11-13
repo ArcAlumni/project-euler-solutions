@@ -1,4 +1,4 @@
-package com.cp;
+package com.pe;
 
 public class P8_LargestProductInSeries {
 
