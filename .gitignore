@@ -23,3 +23,6 @@
 hs_err_pid*
 /out/
 .DS_Store
+/src/c/*.o
+/src/c/*.out
+.vscode
