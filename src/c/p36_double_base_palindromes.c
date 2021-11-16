@@ -27,7 +27,7 @@ int is_decimal_palindrome(int i)
         rev += i % 10;
         i /= 10;
     }
-    return rev == t ? 1 : 0;
+    return rev == t;
 }
 
 int is_binary_palindrome(int i)
@@ -39,5 +39,5 @@ int is_binary_palindrome(int i)
         rev |= (i & 1);
         i >>= 1;
     }
-    return rev == t ? 1 : 0;
+    return rev == t;
 }

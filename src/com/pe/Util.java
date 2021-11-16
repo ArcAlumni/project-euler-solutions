@@ -1,5 +1,8 @@
 package com.pe;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Util {
 
     public static boolean isPrime(long x) {
@@ -77,6 +80,10 @@ public class Util {
             }
         }
         System.out.println();
+    }
+
+    public static Path getFile(String filename) {
+        return Paths.get(System.getProperty("user.dir") + filename);
     }
 
 }
