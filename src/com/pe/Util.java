@@ -118,9 +118,8 @@ public class Util {
             return;
         }
         for (int i = idx; i < arr.length; i++) {
-            if (i < arr.length - 1 && arr[i + 1] == arr[i]) {
+            if (i < arr.length - 1 && arr[i + 1] == arr[i])
                 continue;
-            }
             Util.swap(arr, i, idx);
             permute(arr, idx + 1, li, function);
             Util.swap(arr, i, idx);
