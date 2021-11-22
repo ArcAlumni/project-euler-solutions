@@ -6,28 +6,16 @@ import java.util.List;
 
 public class P35_CircularPrimes {
 
-    private static boolean[] nonPrimes;
+    private static boolean[] primes;
 
     public static void main(String[] args) {
 
-        nonPrimes = new boolean[1000000];
-        nonPrimes[0] = true;
-        nonPrimes[1] = true;
-        nonPrimes[2] = false;
-
-        for (int i = 2; i * i < nonPrimes.length; i++) {
-            if (nonPrimes[i]) {
-                continue;
-            }
-            for (int j = 2; i * j < nonPrimes.length; j++) {
-                nonPrimes[i * j] = true;
-            }
-        }
+        primes = Util.sievesPrimeArray(1000000);
 
         int res = 0;
 
-        for (int i = 2; i < nonPrimes.length; i++) {
-            if (!nonPrimes[i]) {
+        for (int i = 2; i < primes.length; i++) {
+            if (primes[i]) {
                 if (hasAllRotations(i)) {
                     res++;
                 }
@@ -47,7 +35,7 @@ public class P35_CircularPrimes {
         while (idx < li.size()) {
             int el = li.remove(li.size() - 1);
             li.add(0, el);
-            if (nonPrimes[listToInt(li)]) {
+            if (!primes[listToInt(li)]) {
                 return false;
             }
             idx++;
