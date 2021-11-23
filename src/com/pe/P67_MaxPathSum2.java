@@ -1,17 +1,16 @@
 package com.pe;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class P67_MaxPathSum2 {
+public class P67_MaxPathSum2 implements Solution {
 
-    public static void main(String[] args) throws IOException {
-
-        List<String> lines = Files.readAllLines(Util.getFile("/src/resources/p067_triangle.txt"));
+    @Override
+    public String solve() throws Exception {
+        List<String> lines = Files.readAllLines(Util.getFile("p067_triangle.txt"));
         List<Integer> calcLine = Arrays.stream(lines.get(lines.size() - 1).split(" ")).map(x -> Integer.parseInt(x))
                 .collect(Collectors.toList());
 
@@ -23,9 +22,7 @@ public class P67_MaxPathSum2 {
                         Integer.parseInt(num) + calcLine.get(j++ + 1)));
             calcLine = li;
         }
-
-        System.out.println(calcLine);
-
+        return calcLine.get(0).toString();
     }
 
 }

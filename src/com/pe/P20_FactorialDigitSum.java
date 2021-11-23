@@ -1,8 +1,9 @@
 package com.pe;
 
-public class P20_FactorialDigitSum {
+public class P20_FactorialDigitSum implements Solution {
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() throws Exception {
         String num = "1";
         for (int i = 100; i >= 2; i--) {
             num = Util.multiply(num, String.valueOf(i));
@@ -11,7 +12,7 @@ public class P20_FactorialDigitSum {
         for (int i = 0; i < num.length(); i++) {
             sum += (num.charAt(i) - '0');
         }
-        System.out.println(sum);
+        return String.valueOf(sum);
     }
 
 }

@@ -1,9 +1,9 @@
 package com.pe;
 
-public class P48_SelfPowers {
+public class P48_SelfPowers implements Solution {
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() throws Exception {
         String res = "0";
 
         for (int i = 1; i <= 1000; i++) {
@@ -16,8 +16,7 @@ public class P48_SelfPowers {
             res = Util.add(res, powered);
         }
 
-        System.out.println(res);
-
+        return String.valueOf(res.substring(res.length() - 10));
     }
 
 }

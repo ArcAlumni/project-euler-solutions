@@ -2,20 +2,13 @@ package com.pe;
 
 import java.util.Arrays;
 
-public class P15_LatticePaths {
+public class P15_LatticePaths implements Solution {
 
-    public static void main(String[] args) {
-        int n = 10;
-        P15_LatticePaths p = new P15_LatticePaths();
-        dp(n);
-        dp = new long[n][n];
-        for (long[] aa : dp)
-            Arrays.fill(aa, -1);
-        long res = p.dfs(0, 0, n);
-        System.out.println(res);
+    public static void main(String[] args) throws Exception {
+        System.out.println(new P15_LatticePaths().solve());
     }
 
-    static void dp(int n) {
+    String dp(int n) {
         dp = new long[n][n];
         Arrays.fill(dp[0], 1);
         for (int i = 0; i < n; i++) {
@@ -26,10 +19,10 @@ public class P15_LatticePaths {
                 dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
             }
         }
-        System.out.println(dp[n - 1][n - 1]);
+        return String.valueOf(dp[n - 1][n - 1]);
     }
 
-    static long[][] dp;
+    long[][] dp;
 
     long dfs(int i, int j, int n) {
         if (i == n || j == n || i < 0 || j < 0) {
@@ -44,6 +37,17 @@ public class P15_LatticePaths {
         long r1 = dfs(i + 1, j, n);
         long r2 = dfs(i, j + 1, n);
         return dp[i][j] = r1 + r2;
+    }
+
+    @Override
+    public String solve() throws Exception {
+        int n = 21;
+        return dp(n);
+        // dp = new long[n][n];
+        // for (long[] aa : dp)
+        // Arrays.fill(aa, -1);
+        // long res = dfs(0, 0, n);
+        // return String.valueOf(res);
     }
 
 }

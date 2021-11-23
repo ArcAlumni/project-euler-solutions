@@ -1,14 +1,14 @@
 package com.pe;
 
-public class P6_SumSquareDiff {
+public class P6_SumSquareDiff implements Solution {
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() {
         int n = 100;
         long x = ((n) * (n + 1) * ((2 * n) + 1)) / 6;
         long y = ((n) * (n + 1)) / 2;
         y = y * y;
-        System.out.println(y - x);
+        return String.valueOf(y - x);
     }
 
 }

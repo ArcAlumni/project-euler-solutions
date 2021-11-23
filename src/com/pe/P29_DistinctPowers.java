@@ -2,10 +2,10 @@ package com.pe;
 
 import java.util.HashSet;
 
-public class P29_DistinctPowers {
+public class P29_DistinctPowers implements Solution {
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() throws Exception {
         HashSet<String> set = new HashSet<>();
 
         for (int i = 2; i <= 100; i++) {
@@ -17,8 +17,7 @@ public class P29_DistinctPowers {
             }
         }
 
-        System.out.println(set.size());
-
+        return String.valueOf(set.size());
     }
 
 }

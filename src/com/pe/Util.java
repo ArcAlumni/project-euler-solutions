@@ -20,6 +20,15 @@ public class Util {
         return true;
     }
 
+    public static long sqrt(long num) {
+        long t, sqrt = num / 2;
+        do {
+            t = sqrt;
+            sqrt = (t + (num / t)) / 2;
+        } while (t != sqrt);
+        return sqrt;
+    }
+
     public static boolean isPrime(int x) {
         return isPrime((long) x);
     }
@@ -87,7 +96,7 @@ public class Util {
     }
 
     public static Path getFile(String filename) {
-        return Paths.get(System.getProperty("user.dir") + filename);
+        return Paths.get(System.getProperty("user.dir") + "/src/resources/" + filename);
     }
 
     public static boolean[] sievesPrimeArray(int n) {
@@ -156,6 +165,15 @@ public class Util {
         for (int i = 0; i < arr.length; i++) {
             n *= 10;
             n += arr[i];
+        }
+        return n;
+    }
+
+    public static long listToLong(List<Integer> li) {
+        long n = 0;
+        for (int i = 0; i < li.size(); i++) {
+            n *= 10;
+            n += li.get(i);
         }
         return n;
     }

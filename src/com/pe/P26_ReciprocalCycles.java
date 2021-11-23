@@ -1,51 +1,12 @@
 package com.pe;
 
-public class P26_ReciprocalCycles {
+public class P26_ReciprocalCycles implements Solution {
 
-    public static void main(String[] args) {
-
-        String res = "";
-        int reccurringCycle = 0;
-        int var = 0;
-
-        for (int i = 2; i < 1000; i++) {
-            StringBuilder sb = new StringBuilder();
-            int j = i, k = 1;
-            while (true) {
-                boolean f = false;
-                while (k < j) {
-                    if (f)
-                        sb.append("0");
-                    f = true;
-                    k *= 10;
-                }
-                int v = k / j;
-                sb.append(v);
-                if (sb.length() > 5000) {
-                    String dup = hasDup(sb.toString());
-                    if (dup != null) {
-                        res = dup;
-                        if (reccurringCycle < dup.length()) {
-                            reccurringCycle = dup.length();
-                            var = i;
-                        }
-                        break;
-                    }
-                }
-                k %= j;
-                if (k == 0) {
-                    res = sb.toString();
-                    break;
-                }
-            }
-            System.out.println(i + " = " + res);
-        }
-
-        System.out.println(reccurringCycle + " " + var);
-
+    public static void main(String[] args) throws Exception {
+        System.out.println(new P26_ReciprocalCycles().solve());
     }
 
-    static String hasDup(String s) {
+    String hasDup(String s) {
         while (!s.isEmpty()) {
             StringBuilder sb1 = new StringBuilder(s);
             StringBuilder sb2 = new StringBuilder();
@@ -70,6 +31,48 @@ public class P26_ReciprocalCycles {
             s = s.substring(1);
         }
         return null;
+    }
+
+    @Override
+    public String solve() throws Exception {
+        // String res = "";
+        int reccurringCycle = 0;
+        int var = 0;
+
+        for (int i = 2; i < 1000; i++) {
+            StringBuilder sb = new StringBuilder();
+            int j = i, k = 1;
+            while (true) {
+                boolean f = false;
+                while (k < j) {
+                    if (f)
+                        sb.append("0");
+                    f = true;
+                    k *= 10;
+                }
+                int v = k / j;
+                sb.append(v);
+                if (sb.length() > 5000) {
+                    String dup = hasDup(sb.toString());
+                    if (dup != null) {
+                        // res = dup;
+                        if (reccurringCycle < dup.length()) {
+                            reccurringCycle = dup.length();
+                            var = i;
+                        }
+                        break;
+                    }
+                }
+                k %= j;
+                if (k == 0) {
+                    // res = sb.toString();
+                    break;
+                }
+            }
+            // System.out.println(i + " = " + res);
+        }
+
+        return String.valueOf(var);
     }
 
 }

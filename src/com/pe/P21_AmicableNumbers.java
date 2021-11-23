@@ -1,9 +1,9 @@
 package com.pe;
 
-public class P21_AmicableNumbers {
+public class P21_AmicableNumbers implements Solution {
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() throws Exception {
         boolean[] divisorSums = new boolean[10000];
         long res = 0;
         for (int n = 1; n < 10000; n++) {
@@ -22,10 +22,10 @@ public class P21_AmicableNumbers {
                 res += n;
             }
         }
-        System.out.println(res);
+        return String.valueOf(res);
     }
 
-    static int getDivisorSum(int n) {
+    int getDivisorSum(int n) {
         int sum = 1;
         for (int i = 2; i * i <= n; i++) {
             if (n % i == 0) {

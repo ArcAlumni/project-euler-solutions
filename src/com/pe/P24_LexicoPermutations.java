@@ -4,17 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class P24_LexicoPermutations {
+public class P24_LexicoPermutations implements Solution {
 
-    public static void main(String[] args) {
-        int n = 1_000_000;
-        List<Integer> li = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
-        List<Integer> res = new ArrayList<>();
-        rec(li, n, res);
-        System.out.println(res);
+    public static void main(String[] args) throws Exception {
+        System.out.println(new P24_LexicoPermutations().solve());
     }
 
-    private static void rec(List<Integer> num, int n, List<Integer> res) {
+    private void rec(List<Integer> num, int n, List<Integer> res) {
         if (num.size() == 1) {
             res.add(num.get(0));
             return;
@@ -30,6 +26,15 @@ public class P24_LexicoPermutations {
         res.add(num.get(group));
         num.remove(group);
         rec(num, mod, res);
+    }
+
+    @Override
+    public String solve() throws Exception {
+        int n = 1_000_000;
+        List<Integer> li = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        List<Integer> res = new ArrayList<>();
+        rec(li, n, res);
+        return String.valueOf(Util.listToLong(res));
     }
 
 }

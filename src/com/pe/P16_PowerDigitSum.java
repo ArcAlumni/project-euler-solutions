@@ -1,8 +1,9 @@
 package com.pe;
 
-public class P16_PowerDigitSum {
+public class P16_PowerDigitSum implements Solution {
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() throws Exception {
         String val = "1";
         int i = 1;
         while (i <= 1000) {
@@ -15,7 +16,7 @@ public class P16_PowerDigitSum {
             sum += val.charAt(i) - '0';
             i++;
         }
-        System.out.println(sum);
+        return String.valueOf(sum);
     }
 
 }

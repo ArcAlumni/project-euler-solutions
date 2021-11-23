@@ -3,11 +3,13 @@ package com.pe;
 import java.util.Collections;
 import java.util.List;
 
-public class P49_PrimePermutations {
+public class P49_PrimePermutations implements Solution {
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() throws Exception {
 
         boolean[] primes = Util.sievesPrimeArray(10000);
+        boolean occured = false;
 
         for (int i = 1000; i < primes.length; i++) {
 
@@ -30,14 +32,18 @@ public class P49_PrimePermutations {
                 idx++;
             }
             if (idx1 != -1 && idx2 != -1 && (li.get(idx1) - i == li.get(idx2) - li.get(idx1))) {
-                System.out.println(i + " " + li.get(idx1) + " " + li.get(idx2));
+                if (occured)
+                    return String.valueOf(i + "" + li.get(idx1) + "" + li.get(idx2));
+                occured = true;
+
             }
 
         }
 
+        return null;
     }
 
-    static boolean numContainsZero(int n) {
+    boolean numContainsZero(int n) {
         while (n != 0) {
             if (n % 10 == 0) {
                 return true;

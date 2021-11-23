@@ -4,29 +4,11 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class P35_CircularPrimes {
+public class P35_CircularPrimes implements Solution {
 
-    private static boolean[] primes;
+    private boolean[] primes;
 
-    public static void main(String[] args) {
-
-        primes = Util.sievesPrimeArray(1000000);
-
-        int res = 0;
-
-        for (int i = 2; i < primes.length; i++) {
-            if (primes[i]) {
-                if (hasAllRotations(i)) {
-                    res++;
-                }
-            }
-        }
-
-        System.out.println(res);
-
-    }
-
-    static boolean hasAllRotations(int i) {
+    boolean hasAllRotations(int i) {
         if (i < 10) {
             return true;
         }
@@ -43,7 +25,7 @@ public class P35_CircularPrimes {
         return true;
     }
 
-    static List<Integer> intToList(int i) {
+    List<Integer> intToList(int i) {
         List<Integer> li = new LinkedList<>();
         while (i != 0) {
             li.add(i % 10);
@@ -53,13 +35,30 @@ public class P35_CircularPrimes {
         return li;
     }
 
-    static int listToInt(List<Integer> li) {
+    int listToInt(List<Integer> li) {
         int val = 0;
         for (int x : li) {
             val *= 10;
             val += x;
         }
         return val;
+    }
+
+    @Override
+    public String solve() throws Exception {
+        primes = Util.sievesPrimeArray(1000000);
+
+        int res = 0;
+
+        for (int i = 2; i < primes.length; i++) {
+            if (primes[i]) {
+                if (hasAllRotations(i)) {
+                    res++;
+                }
+            }
+        }
+
+        return String.valueOf(res);
     }
 
 }

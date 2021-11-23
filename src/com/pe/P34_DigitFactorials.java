@@ -3,37 +3,16 @@ package com.pe;
 import java.util.Arrays;
 import java.util.List;
 
-public class P34_DigitFactorials {
+public class P34_DigitFactorials implements Solution {
 
-    public static void main(String[] args) {
-
-        factArr = new int[10];
-        factArr[0] = 1;
-        for (int i = 1; i < 10; i++) {
-            factArr[i] = (int) Util.factorialOf(i);
-        }
-
-        System.out.println(Arrays.toString(factArr));
-        int i = 11;
-        int sum = 0;
-        while (i < 9999999) {
-            if (isFactDigitsSumEqual(i)) {
-                sum += i;
-            }
-            i++;
-        }
-
-        System.out.println(sum);
-        // rec(factArr, 1, new ArrayList<>(), "0");
+    public static void main(String[] args) throws Exception {
+        System.out.println(new P34_DigitFactorials().solve());
     }
 
-    static int[] bArr = new int[10];
-    static int maxDigit = 100;
+    int[] bArr = new int[10];
+    int maxDigit = 100;
 
-    static void rec(int[] arr, int idx, List<Integer> li, String sum) {
-        if (isContentEqual(sum)) {
-            System.out.println(sum);
-        }
+    void rec(int[] arr, int idx, List<Integer> li, String sum) {
         if (idx == arr.length) {
             return;
         }
@@ -49,9 +28,9 @@ public class P34_DigitFactorials {
         }
     }
 
-    static int[] factArr;
+    int[] factArr;
 
-    static boolean isContentEqual(String s) {
+    boolean isContentEqual(String s) {
         if (s.length() < 2) {
             return false;
         }
@@ -70,7 +49,7 @@ public class P34_DigitFactorials {
         return true;
     }
 
-    static boolean isFactDigitsSumEqual(int n) {
+    boolean isFactDigitsSumEqual(int n) {
         int i = n;
         int sum = 0;
         while (n != 0) {
@@ -78,6 +57,26 @@ public class P34_DigitFactorials {
             n /= 10;
         }
         return i == sum;
+    }
+
+    @Override
+    public String solve() throws Exception {
+        factArr = new int[10];
+        factArr[0] = 1;
+        for (int i = 1; i < 10; i++) {
+            factArr[i] = (int) Util.factorialOf(i);
+        }
+
+        int i = 11;
+        int sum = 0;
+        while (i < 9999999) {
+            if (isFactDigitsSumEqual(i)) {
+                sum += i;
+            }
+            i++;
+        }
+
+        return String.valueOf(sum);
     }
 
 }

@@ -1,16 +1,15 @@
 package com.pe;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class P81_PathSum2Ways {
+public class P81_PathSum2Ways implements Solution {
 
-    public static void main(String[] args) throws IOException {
-
-        List<List<Integer>> dp = Files.lines(Util.getFile("/src/resources/p081_matrix.txt"))
+    @Override
+    public String solve() throws Exception {
+        List<List<Integer>> dp = Files.lines(Util.getFile("p081_matrix.txt"))
                 .map(l -> Arrays.stream(l.split(",")).map(x -> Integer.parseInt(x)).collect(Collectors.toList()))
                 .collect(Collectors.toList());
 
@@ -29,8 +28,7 @@ public class P81_PathSum2Ways {
             }
         }
 
-        System.out.println(dp.get(dp.size() - 1).get(dp.size() - 1));
-
+        return String.valueOf(dp.get(dp.size() - 1).get(dp.size() - 1));
     }
 
 }

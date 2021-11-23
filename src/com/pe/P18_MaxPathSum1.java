@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class P18_MaxPathSum1 {
+public class P18_MaxPathSum1 implements Solution {
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() throws Exception {
         List<List<Integer>> li = new ArrayList<>();
         li.add(Arrays.asList(75));
         li.add(Arrays.asList(95, 64));
@@ -25,19 +25,19 @@ public class P18_MaxPathSum1 {
         li.add(Arrays.asList(63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31));
         li.add(Arrays.asList(4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23));
 
-//        li = new ArrayList<>();
-//        li.add(Arrays.asList(3));
-//        li.add(Arrays.asList(7, 4));
-//        li.add(Arrays.asList(2, 4, 6));
-//        li.add(Arrays.asList(8, 5, 9, 3));
+        // li = new ArrayList<>();
+        // li.add(Arrays.asList(3));
+        // li.add(Arrays.asList(7, 4));
+        // li.add(Arrays.asList(2, 4, 6));
+        // li.add(Arrays.asList(8, 5, 9, 3));
 
         dfs(li, 0, 0, 0);
-        System.out.println(max);
+        return String.valueOf(max);
     }
 
-    static int max = 0;
+    int max = 0;
 
-    static void dfs(List<List<Integer>> li, int idx, int inIdx, int sum) {
+    void dfs(List<List<Integer>> li, int idx, int inIdx, int sum) {
         if (idx == li.size() - 1) {
             int val = li.get(idx).get(inIdx);
             if (max < sum + val)
@@ -49,6 +49,5 @@ public class P18_MaxPathSum1 {
         if (inIdx + 1 < li.get(idx + 1).size())
             dfs(li, idx + 1, inIdx + 1, sum + val);
     }
-
 
 }
