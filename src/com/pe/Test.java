@@ -33,7 +33,7 @@ public class Test {
             System.out.println(
                     "P-" + getProblemNo(clazz) + " " + "Execution time : " + (System.currentTimeMillis() - time));
         } else {
-            System.out.println("Invalid result for P-" + problemNo + " Expected : " + properties.getProperty(problemNo)
+            System.err.println("Invalid result for P-" + problemNo + " Expected : " + properties.getProperty(problemNo)
                     + " Actual : " + result);
         }
     }

@@ -100,9 +100,7 @@ public class Util {
     }
 
     public static boolean[] sievesPrimeArray(int n) {
-        if (n > 1000000)
-            throw new IllegalArgumentException();
-        boolean[] primes = new boolean[n];
+        boolean[] primes = new boolean[n + 1];
         Arrays.fill(primes, true);
         primes[0] = false;
         primes[1] = false;
@@ -113,6 +111,25 @@ public class Util {
                 primes[i * j] = false;
         }
         return primes;
+    }
+
+    public static List<Integer> getPrimesLessThan(int n) {
+        boolean[] primes = Util.sievesPrimeArray(n);
+        List<Integer> li = new ArrayList<>();
+        for (int i = 2; i < n; i++) {
+            if (primes[i])
+                li.add(i);
+        }
+        return li;
+    }
+
+    public static int lenOf(int n) {
+        int len = 0;
+        while (n != 0) {
+            len++;
+            n /= 10;
+        }
+        return len;
     }
 
     public static void swap(int[] arr, int i, int j) {
