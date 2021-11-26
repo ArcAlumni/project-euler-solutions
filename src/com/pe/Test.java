@@ -12,29 +12,35 @@ import java.util.stream.Collectors;
 
 public class Test {
 
+    private static final int MAX_TIME = 500;
+
     private static Properties properties = new Properties();
 
-    public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, IOException {
+    public static void main(String[] args) throws ClassNotFoundException, IOException {
         properties.load(new FileInputStream(System.getProperty("user.dir") + "/src/resources/solutions.txt"));
-        findAllClassesUsingClassLoader("com.pe").forEach(c -> {
+        for (Class<?> c : findAllClassesUsingClassLoader("com.pe")) {
             try {
                 callMain(c);
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
-        });
+        }
     }
 
-    private static void callMain(Class<?> clazz) throws InstantiationException, IllegalAccessException, Exception {
+    private static void callMain(Class<?> clazz) throws Exception {
         String problemNo = getProblemNo(clazz) + "";
         long time = System.currentTimeMillis();
         String result = ((Solution) (clazz.getDeclaredConstructor().newInstance())).solve();
         if (properties.getProperty(problemNo).equals(result)) {
-            System.out.println(
-                    "P-" + getProblemNo(clazz) + " " + "Execution time : " + (System.currentTimeMillis() - time));
+            long diff = (System.currentTimeMillis() - time);
+            if (diff > MAX_TIME) {
+                System.err.println("P-" + getProblemNo(clazz) + " Execution time : " + diff);
+            } else {
+                System.out.println("P-" + getProblemNo(clazz) + " Execution time : " + diff);
+            }
         } else {
-            System.err.println("Invalid result for P-" + problemNo + " Expected : " + properties.getProperty(problemNo)
-                    + " Actual : " + result);
+            System.err.println("P-" + problemNo + " Invalid result (Expected : " +
+                    properties.getProperty(problemNo) + ", Actual : " + result + ")");
         }
     }
 
