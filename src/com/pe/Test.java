@@ -12,6 +12,7 @@ public class Test {
     private static Properties properties = new Properties();
 
     public static void main(String[] args) throws ClassNotFoundException, IOException {
+        System.out.println("Executing tests with max running time as " + MAX_TIME);
         properties.load(new FileInputStream(System.getProperty("user.dir") + "/src/resources/solutions.txt"));
         for (Class<?> c : findAllClassesUsingClassLoader("com.pe")) {
             try {
