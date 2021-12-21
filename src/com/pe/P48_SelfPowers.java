@@ -8,12 +8,17 @@ public class P48_SelfPowers implements Solution {
 
     @Override
     public String solve() throws Exception {
-        String res = "0";
-        for (int i = 1; i <= 1000; i++) {
-            if (i % 10 != 0)
-                res = Util.add(res, Util.pow(String.valueOf(i), i));
+        long pow = 0, mod = 10000000000l;
+        for (long i = 1; i <= 1000; ++i) {
+            long temp = i;
+            for (long j = 1; j < i; ++j) {
+                temp *= i;
+                temp = temp % mod;
+            }
+            pow += temp;
+            pow %= mod;
         }
-        return res.substring(res.length() - 10);
+        return String.valueOf(pow);
     }
 
 }
